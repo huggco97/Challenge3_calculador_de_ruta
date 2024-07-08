@@ -76,16 +76,16 @@ def A_estrella(laberinto, inicio, fin):
 
             # Añadir el hijo a open_list
             open_list.append(hijo)
-
+    
 
 laberinto = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [1, 0, 0, 1, 0, 0, 0, 1, 0, 0],
     [2, 0, 0, 1, 0, 1, 0, 0, 0, 2],
-    [3, 1, 0, 0, 0, 1, 1, 1, 1, 0],
+    [3, 1, 0, 0, 0, 1, 1, 0, 1, 0],
     [4, 0, 0, 1, 0, 0, 0, 0, 0, 0],
     [5, 1, 0, 0, 0, 0, 0, 0, 0, 0], 
-    [6, 1, 0, 1, 0, 0, 1, 1, 1, 2],
+    [6, 1, 0, 1, 0, 0, 1, 1, 0, 2],
     [7, 0, 2, 1, 0, 3, 0, 0, 0, 0],
     [8, 1, 0, 0, 0, 3, 0, 0, 2, 0],
     [9, 0, 1, 1, 0, 0, 0, 0, 0, 0]
@@ -111,18 +111,18 @@ print(f"Coordenada de fin aceptadas: {fin}")
 #Solicitar coordenada de obstaculo
 obstaculo = solicitar_coordenadas("obstaculo")
 print(f"Coordena de obstaculo aceptada: {obstaculo}")
-laberinto[obstaculo[1]][obstaculo[0]] = 3
+laberinto[obstaculo[0]][obstaculo[1]] = 3
 
 camino = A_estrella(laberinto, inicio, fin)
 print("Camino encontrado:", camino)
 
-
+# guardar camino
 for i in range(len(camino)):
     x,y = camino[i][0],camino[i][1]
     laberinto[x][y]='*'
 
 # Marcar el inicio y el fin en el laberinto
-laberinto[inicio[1]][inicio[0]] = 'I'
+laberinto[inicio[0]][inicio[1]] = 'I'
 laberinto[fin[0]][fin[1]] = 'F'
 
 
